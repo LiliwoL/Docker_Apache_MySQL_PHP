@@ -1,2 +1,3 @@
-dbdata/*
 src/*
+dbdata/*
+.DS_Store
