@@ -15,6 +15,7 @@ Un environnement Docker pour le développement PHP
 ## Terminal
 
 * Lancement du terminal sur le container du service apache
+
 	bin/shell
 
 ## Services
