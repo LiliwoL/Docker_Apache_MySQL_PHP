@@ -2,6 +2,12 @@
 
 Un environnement Docker pour le développement PHP
 
+## Lancement
+
+Après avoir cloné ce dépôt:
+
+	docker-compose up
+
 ## commandes utiles
 
 * Liste des containers
