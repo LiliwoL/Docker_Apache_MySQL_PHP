@@ -10,7 +10,7 @@ services:
     container_name: dev_web
     ports:
       - '80:80'
-      - '9001:9000'
+      - '9003:9003'
     volumes:
       - './src:/var/www/html'
       - '~/.composer/cache:/var/www/.composer/cache'
