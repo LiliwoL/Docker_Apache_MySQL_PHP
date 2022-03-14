@@ -58,6 +58,9 @@ RUN docker-php-ext-configure \
 # Install Composer
 RUN	curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
+# Install Oh MyZSH
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+
 # Configuring system
 ADD /.docker/config/php.ini /usr/local/etc/php/php.ini
 COPY /.docker/users/* /var/www/
