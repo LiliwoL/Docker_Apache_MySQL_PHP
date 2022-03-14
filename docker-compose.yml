@@ -1,0 +1,62 @@
+version: '3.1'
+services:
+  apache:
+    build:
+      context: .
+      # PHP 7.4
+      # dockerfile: build/apache/php-7.4/Dockerfile
+      # PHP 8.1
+      dockerfile: build/apache/php-8.1/Dockerfile
+    container_name: dev_web
+    ports:
+      - '80:80'
+      - '9001:9000'
+    volumes:
+      - './src:/var/www/html'
+      - '~/.composer/cache:/var/www/.composer/cache'
+    environment:
+      XDEBUG_CONFIG: remote_host=localhost
+      PHP_IDE_CONFIG: serverName=Docker
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - -network_dev
+
+  db:
+    image: 'mariadb:10.7'
+    container_name: dev_db
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MARIADB_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=formation
+      - MARIADB_DATABASE=formation
+      - MYSQL_USER=admin
+      - MARIADB_USER=admin
+      - MYSQL_PASSWORD=admin123
+      - MARIADB_PASSWORD=admin123
+    volumes:
+      - './dbdata:/var/lib/mysql'
+      - './backups:/var/tmp/backups'
+    networks:
+      - -network_dev
+
+  adminer:
+    image: adminer
+    container_name: dev_adminer
+    restart: always
+    ports:
+      - '8080:8080'
+    networks:
+      - -network_dev
+
+
+networks:
+  -network_dev:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
