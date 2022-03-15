@@ -44,6 +44,26 @@ services:
     networks:
       - -network_dev
 
+  db2:
+    image: 'mariadb:10.7'
+    container_name: dev_db2
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MARIADB_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=papeterie_db
+      - MARIADB_DATABASE=papeterie_db
+      - MYSQL_USER=admin
+      - MARIADB_USER=admin
+      - MYSQL_PASSWORD=admin123
+      - MARIADB_PASSWORD=admin123
+    volumes:
+      - './dbdata2:/var/lib/mysql'
+      - './backups2:/var/tmp/backups'
+    networks:
+      - -network_dev
+
   adminer:
     image: adminer
     container_name: dev_adminer
