@@ -1,7 +1,10 @@
 src/
+
 dbdata/
 backups/
+
+dbdata2/
 backups2/
-db2data/
+
 .DS_Store
 .idea
