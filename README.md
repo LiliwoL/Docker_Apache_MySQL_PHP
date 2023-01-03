@@ -6,7 +6,7 @@ Un environnement Docker pour le développement PHP
 
 Après avoir cloné ce dépôt:
 
-	docker-compose up
+	docker-compose up -d
 
 ## commandes utiles
 
@@ -20,9 +20,9 @@ Après avoir cloné ce dépôt:
 
 ## Terminal
 
-* Lancement du terminal sur le container du service apache
+* Lancement du terminal sur le container du service **apache**
 
-	bin/shell
+`bin/shell`
 
 ## Services
 
